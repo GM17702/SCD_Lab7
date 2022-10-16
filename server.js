@@ -27,3 +27,24 @@ const connect = async () => {
       connect();
       console.log("Server is running on port 3001")
     })
+
+    app.get("/",function(req,res){
+    
+        res.sendFile(__dirname+"/public.html");
+        
+         
+        
+        })
+        
+        app.post("/",function(req,res){
+        
+         var user = new userModel({
+          name: req.body.uname
+           });
+      
+          user.save();
+          
+          res.send("<h1>Your username '"+req.body.uname+"' has been stored in the DB. </h1>")
+         
+        
+        })
